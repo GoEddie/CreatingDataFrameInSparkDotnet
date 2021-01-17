@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using Microsoft.Spark.Sql;
+using Microsoft.Spark.Sql.Types;
 
 namespace CreatingDataFrames
 {
@@ -16,6 +17,58 @@ namespace CreatingDataFrames
             CreateUsingRangeAndDataFrameAPI(spark);
             CreateByReadingData(spark);
             CreateUsingBuiltInType(spark);
+            CreateUsingGenericRowAndStructType(spark);
+            
+        }
+
+        private static void CreateUsingGenericRowAndStructType(SparkSession spark)
+        {
+            Console.WriteLine("spark.CreateDataFrame using StructType");
+            var rowOne = new GenericRow(new object[]
+            {
+                "columnOne Row One", 1.1
+            });
+
+            var rowTwo = new GenericRow(new object[]
+            {
+                "columnOne Row Two", null
+            });
+
+            var rowThree = new GenericRow(new object[]
+            {
+                "columnOne Row Three", 3.3
+            });
+
+            var rows = new List<GenericRow>()
+            {
+                rowOne, rowTwo, rowThree
+            };
+
+            var structType = new StructType(new List<StructField>()
+            {
+                new StructField("column one", new StringType(), isNullable: false),
+                new StructField("column two", new DoubleType(), isNullable: true)
+            });
+
+            var dataFrame = spark.CreateDataFrame(rows, structType);
+            dataFrame.Show();
+            /*
+             *  +-------------------+----------+
+                |         column one|column two|
+                +-------------------+----------+
+                |  columnOne Row One|       1.1|
+                |  columnOne Row Two|      null|
+                |columnOne Row Three|       3.3|
+                +-------------------+----------+
+             */
+            
+            dataFrame.PrintSchema();
+            
+            /*
+             *  root
+                 |-- column one: string (nullable = false)
+                 |-- column two: double (nullable = true)
+             */
 
         }
 
