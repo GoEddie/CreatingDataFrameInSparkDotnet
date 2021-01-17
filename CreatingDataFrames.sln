@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreatingDataFrames", "CreatingDataFrames\CreatingDataFrames.csproj", "{7643EA15-4405-430A-A2D3-A888E725F348}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7643EA15-4405-430A-A2D3-A888E725F348}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7643EA15-4405-430A-A2D3-A888E725F348}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7643EA15-4405-430A-A2D3-A888E725F348}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7643EA15-4405-430A-A2D3-A888E725F348}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
