@@ -12,10 +12,10 @@ namespace CreatingDataFrames
         {
             var spark = SparkSession.Builder().AppName("Creator").GetOrCreate();
             
+            CreateByReadingData(spark);
             CreateUsingRange(spark);
             CreateUsingRangeInSql(spark);
             CreateUsingRangeAndDataFrameAPI(spark);
-            CreateByReadingData(spark);
             CreateUsingBuiltInType(spark);
             CreateUsingGenericRowAndStructType(spark);
             
